@@ -175,6 +175,6 @@ class FFT:
         self.ax3.set_xlabel(r"frequencies [time$^{-1}$]")
         self.ax3.set_ylabel(r"Phase")
 
-        plt.tight_layout()
+        # plt.tight_layout()
 
-        plt.show()
+        # plt.show()
