@@ -18,7 +18,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 def Closest_Power_of_Two_Down(N):
     return int(2**(np.floor(np.log(N) / np.log(2.0))))
@@ -152,6 +151,8 @@ class FFT:
         self.phase  = np.angle(self.S)
 
     def Plot(self):
+        import matplotlib.pyplot as plt
+
         self.fig = plt.figure()
         self.ax1 = self.fig.add_subplot(211)
         self.ax2 = self.fig.add_subplot(223)
@@ -177,4 +178,4 @@ class FFT:
 
         # plt.tight_layout()
 
-        # plt.show()
+        plt.show()
