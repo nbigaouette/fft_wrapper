@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Nicolas Bigaouette
@@ -42,27 +42,6 @@ class FFT:
         self.Sabs2          = 0.0;
         self.phase          = 0.0;
 
-    def Print(self):
-        d = self.__dict__
-        print self
-        for member in d:
-            print "   ", member, "=",
-            value = d[member]
-            if (type(value) == np.ndarray):
-                if (len(value) > 10):
-                    print value[0:5], "...", value[-5:]
-                else:
-                    print value
-            else:
-                print value
-
-        omega_range     = (2.0*np.pi) / self.dt
-        omega_precision = omega_range / self.nt
-        print "Spectrum's angular frequency range:     2 pi / (dt)    =", omega_range,     "(" + str(self.omega[-1] - self.omega[0]) + ")"
-        print "Spectrum's angular frequency precision: 2 pi / (nt dt) =", omega_precision, "(" + str(self.omega[1]  - self.omega[0]) + ")"
-        print "Spectrum's frequency range:     1 / (dt)    =", omega_range/(2.0*np.pi),     "(" + str((self.omega[-1] - self.omega[0])/(2.0*np.pi)) + ")"
-        print "Spectrum's frequency precision: 1 / (nt dt) =", omega_precision/(2.0*np.pi), "(" + str((self.omega[1]  - self.omega[0])/(2.0*np.pi)) + ")"
-
     def Set_Time_Signal(self, t, signal, resize_NFFT = 0):
         self.t              = t
         self.signal         = signal
@@ -75,7 +54,7 @@ class FFT:
         if (self.resize_NFFT != 0):
             # Makes FFT algorithm faster by resizing signal
 
-            print "Changing NFFT from", self.nt, "to",
+            print("Changing NFFT from", self.nt, "to ", end="")
 
             if (self.resize_NFFT == -1):
                 # -1 will resize down to closest power of two
@@ -103,7 +82,7 @@ class FFT:
                 self.signal         = new_signal
                 self.t              = np.linspace(self.t[0], (self.nt-1)*self.dt, self.nt)
 
-            print self.nt
+            print(self.nt)
 
         assert(len(self.t)      == self.nt)
         assert(len(self.signal) == self.nt)
